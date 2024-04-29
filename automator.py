@@ -7,8 +7,11 @@ def open_whatsapp_web():
         page = context.new_page()
         page.goto("https://web.whatsapp.com/")
         
-        page.get_by_role("button", name="Link with phone number", exact=True).click()
-        page.get_by_label("Type your phone number.").click()
+        page.mouse.click(236, 643)
+        page.mouse.click(236, 643)
+        page.mouse.click(236, 643)
+        page.mouse.click(236, 643)
+        
         page.get_by_label("Type your phone number.").fill("+254 743 854888")
         page.get_by_role("button", name="Next").click()
 
@@ -35,13 +38,11 @@ def open_whatsapp_web():
             page.get_by_role("textbox", name="Search input textbox").fill("⊙ (You)")
             
             # Find the element with translateY(72px) style attribute value
-            element = page.query_selector('div[style="transform: translateY(72px);"]')
+            # element = page.get_by_role("gridcell", name="⊙ (You) Yesterday").locator("div").first()
 
-            if element:
-                # Click on the element
-                element.click()
-            else:
-                print("Element not found")
+            page.mouse.click(138, 213)
+            page.mouse.click(138, 213)
+
                 
             page.get_by_role("textbox", name="Type a message").fill("Hi James, Master Developer")
             page.get_by_label("Send").click()
